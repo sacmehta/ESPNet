@@ -4,4 +4,4 @@ This directory contains the pretrained models for ESPNet-C under three different
 
 * p=2, q=3
 * p=2, q=5
-* p=2, q=5
+* p=2, q=8
