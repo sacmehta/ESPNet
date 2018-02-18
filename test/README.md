@@ -10,6 +10,8 @@ Pre-requisites:
 
 * Also, if the image format is different (e.g. jpg), please change in the VisualizeResults.py file.
 
+This can be done using the below command:
+
 ```
 python VisualizeResults.py --data_dir <data_dir> --img_extn <image extension>
 ```
