@@ -121,13 +121,19 @@ def main(args):
     classes = 20
     if args.modelType == 2:
         modelA = Net.ESPNet_Encoder(classes, p, q)  # Net.Mobile_SegNetDilatedIA_C_stage1(20)
-        modelA.load_state_dict(
-            torch.load(args.weightsDir + os.sep + 'encoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(q) + '.pth'))
+        model_weight_file = args.weightsDir + os.sep + 'encoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(
+            q) + '.pth'
+        if not os.path.isfile(model_weight_file):
+            print('Pre-trained model file does not exist. Please check ../pretrained/encoder folder')
+            exit(-1)
+        modelA.load_state_dict(torch.load(model_weight_file))
     elif args.modelType == 1:
         modelA = Net.ESPNet(classes, p, q)  # Net.Mobile_SegNetDilatedIA_C_stage1(20)
-        print(args.weightsDir + os.sep + 'decoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(q) + '.pth')
-        modelA.load_state_dict(
-            torch.load(args.weightsDir + os.sep + 'decoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(q) + '.pth'))
+        model_weight_file = args.weightsDir + os.sep + 'decoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(q) + '.pth'
+        if not os.path.isfile(model_weight_file):
+            print('Pre-trained model file does not exist. Please check ../pretrained/decoder folder')
+            exit(-1)
+        modelA.load_state_dict(torch.load(model_weight_file))
     else:
         print('Model not supported')
     # modelA = torch.nn.DataParallel(modelA)
