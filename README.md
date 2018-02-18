@@ -14,7 +14,7 @@ This repository is organized as:
 
 ## Performance on CityScape dataset
 
-* Our model ESPNet with p=2, and q=8 runs at 
+* Our model ESPNet with p=2, and q=8 achives an mIOU of **60.3** on the CityScapes validation dataset and runs at 
  * 112 fps on the NVIDIA TitanX (30 fps faster than [ENet](https://arxiv.org/abs/1606.02147))
  * 9 FPS on TX2
  * With the same number of parameters as [ENet](https://arxiv.org/abs/1606.02147), our model is **2%** more accurate
