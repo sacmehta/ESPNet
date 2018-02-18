@@ -5,9 +5,10 @@ This folder contains the python scripts for running our pretrained models on the
 ## Getting Started
 We provide the pretrained weights for ESPNet and ESPNet-C. Recall that ESPNet is the same as ESPNet-C, but with light weight decoder.
 
-Pre-requisites: By default, we expect all images inside the ./data directory. If they are in different directory, please change the  data_dir argument in the VisualizeResults.py file.
+Pre-requisites: 
+* By default, we expect all images inside the ./data directory. If they are in different directory, please change the  **data_dir** argument in the VisualizeResults.py file.
 
-Also, if the image format is different (e.g. jpg), please change in the VisualizeResults.py file.
+* Also, if the image format is different (e.g. jpg), please change in the VisualizeResults.py file.
 
 
 ### Running ESPNet-C models
