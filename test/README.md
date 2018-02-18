@@ -1,4 +1,5 @@
-This folder contains the code for testing
+# ESPNet: Towards Fast and Efficient Semantic Segmentation on the Embedded Devices
+
 
 ## Getting Started
 We provide the pretrained weights for ESPNet and ESPNet-C. Recall that ESPNet is the same as ESPNet-C, but with light weight decoder.
