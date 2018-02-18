@@ -10,6 +10,10 @@ Pre-requisites:
 
 * Also, if the image format is different (e.g. jpg), please change in the VisualizeResults.py file.
 
+```
+python VisualizeResults.py --data_dir <data_dir> --img_extn <image extension>
+```
+
 
 ### Running ESPNet-C models
 To run the ESPNet-C models, execute the following commands
