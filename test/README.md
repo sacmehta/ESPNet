@@ -1,5 +1,6 @@
 # ESPNet: Towards Fast and Efficient Semantic Segmentation on the Embedded Devices
 
+This folder contains the python scripts for running our pretrained models on the Cityscape dataset.
 
 ## Getting Started
 We provide the pretrained weights for ESPNet and ESPNet-C. Recall that ESPNet is the same as ESPNet-C, but with light weight decoder.
