@@ -10,3 +10,11 @@ This repository is organized as:
 * [pretrained] (/pretrained/) This directory contains the pre-trained models on the CityScape dataset
   * [encoder](/pretrained/encoder/) This directory contains the pretrained **ESPNet-C** models
   * [decoder](/pretrained/decoder/) This directory contains the pretrained **ESPNet** models
+
+
+## Performance on CityScape dataset
+
+* Our model ESPNet with p=2, and q=8 runs at 
+ * 112 fps on the NVIDIA TitanX (30 fps faster than [ENet](https://arxiv.org/abs/1606.02147))
+ * 9 FPS on TX2
+ * With the same number of parameters as [ENet](https://arxiv.org/abs/1606.02147), our model is **2%** more accurate
