@@ -18,3 +18,11 @@ Our model ESPNet with p=2, and q=8 achives an mIOU of **60.3** on the CityScapes
 * 112 fps on the NVIDIA TitanX (30 fps faster than [ENet](https://arxiv.org/abs/1606.02147))
 * 9 FPS on TX2
 * With the same number of parameters as [ENet](https://arxiv.org/abs/1606.02147), our model is **2%** more accurate
+
+## Pre-requisite
+
+To run this code, you need to have following libraries:
+* [OpenCV](https://opencv.org/) - We tested our code with version > 3.0.
+* [PyTorch](http://pytorch.org/)
+
+We recommend to use [Anaconda](https://conda.io/docs/user-guide/install/linux.html). We have tested our code on Ubuntu 16.04.
