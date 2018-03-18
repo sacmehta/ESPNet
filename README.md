@@ -1,4 +1,4 @@
-# ESPNet: Towards Fast and Efficient Semantic Segmentation on the Embedded Devices
+#  ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation
 
 This repository contains the source code of our paper, ESPNet.
 
