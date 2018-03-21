@@ -1,26 +1,126 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation</title>
-    <link rel="stylesheet" type="text/css" href="css/pageNew.css" />
-    <link rel="stylesheet" type="text/css" href="css/sankey.css" />
-    <link rel="stylesheet" type="text/css" href="css/filter.css" />
-    <link rel="stylesheet" type="text/css" href="css/nv.d3.css" />
-    <script type="text/javascript" src="js/d3.v3.js"></script>
-    <script type="text/javascript" src="js/sankey.js"></script>
-    <script type="text/javascript" src="js/filter/predicate.js"></script>
-    <script type="text/javascript" src="js/filter/filter_control.js"></script>
-    <script type="text/javascript" src="js/filter/group.js"></script>
-    <script type="text/javascript" src="js/project.js"></script>
-    <script type="text/javascript" src="js/projectHelp.js"></script>
-    <script type="text/javascript" src="js/helper.js"></script>
-    <script type="text/javascript" src="js/compare.js"></script>
-    <script type="text/javascript" src="js/nv.d3.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="main.css" rel="stylesheet" media="all">
+<meta name="description" content="ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation" />
+<meta name="keywords" content="cnn, semantic segmentation">
+<script>
+function buttonSwitch(id, text)
+{
+	old_src = document.getElementById(id).src;
+	ind = old_src.lastIndexOf('/');
+	document.getElementById(id).src = old_src.substr(0,ind+1) + text;
+}
+
+</script>
+<title>ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation</title>
 </head>
-<body id="bodyTable">
-    <div class="container" id="mainHeading">
-        <h1 class="main-heading">ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation<br/><small>Sachin Mehta</small></h1>
+
+<body>
+
+<div id="top_arrow" style="position: fixed; bottom: 10px; right: 10px;">
+<a href="#title">
+<img src="webfigures/top_arrow.jpg" style="border: 0pt none ; width: 26px; height: 32px;"/></a>
 </div>
+
+<h2 id="title" class="auto-style1">ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation</h2>
+
+<p class="auto-style7"  align="center">
+	<a href="https://sachinmehtangb.wixsite.com/sachinmehta" target="_blank">Sachin Mehta</a><sup>1</sup>, <a href="http://legacydirs.umiacs.umd.edu/~mrastega/" target="_blank">Mohammad Rastegari</a><sup>2</sup>, 
+   <a href="http://escience.washington.edu/people/anat-caspi/" target="_blank">Anat Caspi</a><sup>1</sup>, <a href="https://homes.cs.washington.edu/~shapiro/" target="_blank">Linda Shapiro</a><sup>1</sup>,  and <a href="http://ssli.ee.washington.edu/~hannaneh/index.html" target="_blank">Hannaneh Hajishirzi</a><sup>1</sup>
+</p>
+
+<p class="auto-style7"  align="center">
+<sup>1</sup>
+University of Washington, Seattle, WA, USA
+<br>
+<sup>2</sup>
+Allen Institute for AI and XNOR.AI
+</p>
+<!--<p class="auto-style7"  align="center">&nbsp;&nbsp;&nbsp; </p>-->
+<p align=left>&nbsp;</p>
+<p align="center">
+<table style="width:960px" align="center">
+<tr>
+	<td><img width=960px alt="" src="webfigures/espnetApp.jpeg"></td>	
+</tr>
+<tr>
+	<td><p><b>Figure:</b> ESPNet for visual scene understanding on edge devices.</p></td>
+</tr>
+</table>
+
+<p class="style2"><strong><span class="auto-style6">Abstract</span></strong></p>
+<p class="auto-style5">We introduce a fast and efficient convolutional neural network, ESPNet, for semantic segmentation of high resolution images under resource constraints. ESPNet is based on a new convolutional module, efficient spatial pyramid (ESP), which is efficient in terms of computation, memory, and power. ESPNet is 22 times faster (on a standard GPU) and 180 times smaller than the state-of-the-art  semantic  segmentation  network  PSPNet,  while  its  category-wise accuracy is only 8% less. We evaluated EPSNet on a variety of semantic segmentation datasets including Cityscapes, PASCAL VOC, and a breast biopsy whole slide  image  dataset.  Under  the  same  constraints  on  memory  and  computation, ESPNet outperforms all the current efficient CNN networks such as MobileNet, ShuffleNet, and ENet on both standard metrics and our newly introduced performance metrics that measure efficiency on edge devices. Our network can process high resolution images at a rate of 112 and 9 frames per second on a standard GPU and edge device, respectively.
+</p>
+
+<p class="auto-style5">&nbsp;</p>
+<p id="downloads", class="auto-style4"><strong>Downloads</strong></p>
+<table cellSpacing=4 cellPadding=2 border=0 style="width: 90%">
+<tr COLSPAN="2">
+	<td align="center" valign="center">
+		<img style="padding:0; clear:both; " src="webfigures/espnet.jpeg" align="middle" alt="Snapshot for paper" class="pdf" width="250" />
+	</td>
+	<td>
+	</td>
+	<td align="left" class="auto-style5"><i>ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation</i>
+	<br>
+	Sachin Mehta, Mohammad Rastegari, Anat Caspi, Linda Shapiro, and Hannaneh Hajishirzi
+	<br>
+	<img alt="" height="32" src="webfigures/pdf.jpg" width="31">&nbsp;&nbsp;[<a target="_blank" href="https://arxiv.org/pdf/1803.06815.pdf">Paper</a>]<br><br>
+	<img alt="" height="32" src="webfigures/github.jpg" width="31">&nbsp;&nbsp;[<a target="_blank" href="https://github.com/sacmehta/ESPNet/">Source Code</a>]<br><br>
+	</td>
+	</tr>
+</table>
+<br>
+
+<p class="auto-style5">&nbsp;</p>
+<p id="performance", class="auto-style4"><strong>Comparison with efficient convolutional modules</strong></p>
+<table style="width:960px" align="center">
+<tr>
+	<td><img width=400px alt="" src="webfigures/blockSpeed.jpeg"></td>
+	<td></td>
+	<td><img width=400px alt="" src="webfigures/blockSize.jpeg"></td>
+</tr>
+<tr>
+	<td colspan=3><p class="auto-style5"><b>Figure:</b> Comparison between state-of-the-art efficient convolutional modules. Our ESP module outperformed MobileNet and ShuffleNet modules by 7% and 12%, respectively, while learning a similar number of parameters and having comparable network size and inference speed. Furthermore, the ESP module delivered comparable accuracy to ResNext and Inception
+more efficiently. A basic ResNet module (stack of two 3 × 3 convolutions with a skip-connection) delivered the best performance, but had to learn 6.5× more parameters. </p></td>
+</tr>
+</table>
+
+<p class="auto-style5">&nbsp;</p>
+<p id="performance", class="auto-style4"><strong>Comparison with state-of-the-art semantic segmentation networks</strong></p>
+<table style="width:960px" align="center">
+<tr>
+	<td><img width=400px alt="" src="webfigures/sota.jpeg"></td>
+	<td></td>
+	<td><img width=400px alt="" src="webfigures/sotaPower.jpeg"></td>
+</tr>
+<tr>
+	<td colspan=3><p class="auto-style5"><b>Figure:</b> Comparison between state-of-the-art semantic segmentation networks. Our ESPNet is fast, has low power consumption, and delivers good category-wise segmentation accuracy.</p></td>
+</tr>
+</table>
+
+<p class="auto-style5">&nbsp;</p>
+<p id="references", class="auto-style4"><strong>References</strong></p>
+<p id="ref_1" class="auto-style5">
+[1] (<b>PSPNet</b>) Zhao, Hengshuang, et al. "Pyramid scene parsing network." IEEE Conf. on Computer Vision and Pattern Recognition (CVPR). 2017.<br>
+[2] (<b>FCN-8s</b>) Long, Jonathan, Evan Shelhamer, and Trevor Darrell. "Fully convolutional networks for semantic segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2015.<br>
+[3] (<b>SegNet</b>) Badrinarayanan, Vijay, Alex Kendall, and Roberto Cipolla. "Segnet: A deep convolutional encoder-decoder architecture for image segmentation." IEEE transactions on pattern analysis and machine intelligence 39.12 (2017): 2481-2495.<br>
+[4] (<b>DeepLab</b>) Chen, Liang-Chieh, et al. "Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs." IEEE transactions on pattern analysis and machine intelligence 40.4 (2018): 834-848.<br>
+[5] (<b>SQNet</b>) Treml, Michael, et al. "Speeding up semantic segmentation for autonomous driving." MLITS, NIPS Workshop. 2016.<br>
+[6] (<b>ERFNet</b>) Romera, Eduardo, et al. "ERFNet: Efficient Residual Factorized ConvNet for Real-Time Semantic Segmentation." IEEE Transactions on Intelligent Transportation Systems 19.1 (2018): 263-272.<br>
+[7] (<b>ENet</b>) Paszke, Adam, et al. "Enet: A deep neural network architecture for real-time semantic segmentation." arXiv preprint arXiv:1606.02147 (2016).<br>
+[8] (<b>MobileNet</b>) Howard, Andrew G., et al. "Mobilenets: Efficient convolutional neural networks for mobile vision applications." arXiv preprint arXiv:1704.04861 (2017).<br>
+[9] (<b>ShuffleNet</b>) Zhang, Xiangyu, et al. "Shufflenet: An extremely efficient convolutional neural network for mobile devices." arXiv preprint arXiv:1707.01083 (2017).<br> 
+[10] (<b>ResNext</b>) Xie, Saining, et al. "Aggregated residual transformations for deep neural networks." Computer Vision and Pattern Recognition (CVPR), 2017 IEEE Conference on. IEEE, 2017.<br> 
+[11] (<b>ResNet</b>) He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.<br> 
+[12] (<b>Inception</b>) Szegedy, Christian, et al. "Inception-v4, inception-resnet and the impact of residual connections on learning." AAAI. Vol. 4. 2017.<br> 
+</p>
+
+
+<p class="auto-style1"><font color="#999999">This page is adapted from PSPNet.</font></p>
+
 </body>
+
 </html>
