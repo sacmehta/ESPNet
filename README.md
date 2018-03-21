@@ -1,6 +1,6 @@
 #  ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation
 
-This repository contains the source code of our paper, ESPNet.
+This repository contains the source code of our paper, [ESPNet](https://arxiv.org/abs/1803.06815).
 
 
 ## Structure of this repository
@@ -26,3 +26,14 @@ To run this code, you need to have following libraries:
 * [PyTorch](http://pytorch.org/)
 
 We recommend to use [Anaconda](https://conda.io/docs/user-guide/install/linux.html). We have tested our code on Ubuntu 16.04.
+
+## Citation
+If ESPNet is useful for your research, then please cite our paper.
+```
+@article{mehta2018espnet,
+  title={ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation},
+  author={Sachin Mehta, Mohammad Rastegari, Anat Caspi, Linda Shapiro, and Hannaneh Hajishirzi},
+  journal={arXiv preprint arXiv:1803.06815},
+  year={2018}
+}
+```
