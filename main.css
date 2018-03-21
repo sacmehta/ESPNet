@@ -1,0 +1,104 @@
+body { 
+  	font-family: Verdana, sans-serif;
+	color:#303030;
+	background:#fff;
+	text-align:center; /* for IE */
+  	margin:0 auto; /* for the rest */
+  	max-width: 960px;
+}
+
+table{
+	background-color: #ffffff;
+	text-align: center;
+}
+a, a:link, a:visited {
+  color: #1f82a9;
+  background:inherit;
+  background-color: transparent;
+  text-decoration: underline; 
+  cursor: pointer;
+}
+a:hover {
+  color: #006699;
+  background:inherit;
+  text-decoration: underline;
+}
+img { border: 0; }
+h1,h2,h3 { font-family: Cambria, Helvetica, Arial, Verdana, san-serif; }
+
+.style1 {
+	text-align: center;
+}
+.style2 {
+	text-align: left;
+}
+.style3 {
+	font-size: large;
+	color: #0000FF;
+}
+.style4 {
+	vertical-align: top;
+}
+.style5 {
+	text-align: left;
+	font-size: large;
+	color: #0000FF;
+}
+.style7 {
+	text-align: center;
+	font-size: large;
+}
+.auto-style1 {
+	text-align: center;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style2 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style3 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-weight: bold;
+}
+.auto-style4 {
+	text-align: left;
+	font-size: large;
+	color: #0000FF;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style5 {
+	text-align: justify;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style5-c {
+	text-align: center;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style6 {
+	font-size: large;
+	color: #0000FF;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style7 {
+	text-align: center;
+	font-size: large;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style8 {
+	border-width: 0px;
+}
+.auto-style9 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: x-large;
+}
+.auto-style10 {
+	vertical-align: top;
+	text-align: center;
+}
+.xiaoyong{
+	horizontal-align: left;
+}
+
+.inline{
+	 display: inline-block;
+}
+
