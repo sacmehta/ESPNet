@@ -23,7 +23,7 @@ python main.py --scaleIn 8 --p <value of p> --q <value of q>
 Once you are done training the ESPNet-C, you can attach the light-weight decoder and train the ESPNet model
 
 ```
-python main.py --decoder True --pretrained <path of the pretrained ESPNet-C file>
+python main.py --scaleIn 1 --p <value of p> --q <value of q> --decoder True --pretrained <path of the pretrained ESPNet-C file>
 ```
 
 **Note 1:** Currently, we support only single GPU training. If you want to train the model on multiple-GPUs, you can use **nn.DataParallel** api provided by PyTorch.
