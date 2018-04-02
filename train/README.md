@@ -13,10 +13,10 @@ You can start training the model using below command:
 python main.py 
 ```
 
-By default, **ESPNet-C** will be trained with p=2 and q=8. If you want to change the parameters, you can do so by using the below command:
+By default, **ESPNet-C** will be trained with p=2 and q=8. Since the spatial dimensions of the output of ESPNet-C are 1/8th of original image size, please set scaleIn parameter to 8. If you want to change the parameters, you can do so by using the below command:
 
 ```
-python main.py --p <value of p> --q <value of q>
+python main.py --scaleIn 8 --p <value of p> --q <value of q>
 ```
 
 ### Training ESPNet
