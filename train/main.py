@@ -383,7 +383,7 @@ if __name__ == '__main__':
     parser.add_argument('--data_dir', default="./city", help='Data directory')
     parser.add_argument('--inWidth', type=int, default=1024, help='Width of RGB image')
     parser.add_argument('--inHeight', type=int, default=512, help='Height of RGB image')
-    parser.add_argument('--scaleIn', type=int, default=1, help='For ESPNet-C, scaleIn=8. For ESPNet, scaleIn=1')
+    parser.add_argument('--scaleIn', type=int, default=8, help='For ESPNet-C, scaleIn=8. For ESPNet, scaleIn=1')
     parser.add_argument('--max_epochs', type=int, default=300, help='Max. number of epochs')
     parser.add_argument('--num_workers', type=int, default=4, help='No. of parallel threads')
     parser.add_argument('--batch_size', type=int, default=12, help='Batch size. 12 for ESPNet-C and 6 for ESPNet. '
@@ -398,7 +398,7 @@ if __name__ == '__main__':
     parser.add_argument('--logFile', default='trainValLog.txt', help='File that stores the training and validation logs')
     parser.add_argument('--onGPU', default=True, help='Run on CPU or GPU. If TRUE, then GPU.')
     parser.add_argument('--decoder', type=bool, default=False,help='True if ESPNet. False for ESPNet-C') # False for encoder
-    parser.add_argument('--pretrained', default='./pretrained/encoder.pth', help='Pretrained ESPNet-C weights. '
+    parser.add_argument('--pretrained', default='../pretrained/encoder/espnet_p_2_q_8.pth', help='Pretrained ESPNet-C weights. '
                                                                               'Only used when training ESPNet')
     parser.add_argument('--p', default=2, type=int, help='depth multiplier')
     parser.add_argument('--q', default=8, type=int, help='depth multiplier')
