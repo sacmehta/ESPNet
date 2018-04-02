@@ -17,6 +17,10 @@ By default, **ESPNet-C** will be trained with p=2 and q=8. Since the spatial dim
 
 ```
 python main.py --scaleIn 8 --p <value of p> --q <value of q>
+
+Example:
+
+python main.py --scaleIn 8 --p 2 --q 8
 ```
 
 ### Training ESPNet
@@ -24,6 +28,10 @@ Once you are done training the ESPNet-C, you can attach the light-weight decoder
 
 ```
 python main.py --scaleIn 1 --p <value of p> --q <value of q> --decoder True --pretrained <path of the pretrained ESPNet-C file>
+
+Example: 
+
+python main.py --scaleIn 1 --p 2 --q 8 --decoder True --pretrained ../pretrained/encoder/espnet_p_2_q_8.pth
 ```
 
 **Note 1:** Currently, we support only single GPU training. If you want to train the model on multiple-GPUs, you can use **nn.DataParallel** api provided by PyTorch.
