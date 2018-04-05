@@ -164,7 +164,7 @@ def trainValidateSegmentation(args):
         model = net.ESPNet_Encoder(args.classes, p=p, q=q)
         args.savedir = args.savedir + '_enc_' + str(p) + '_' + str(q) + '/'
     else:
-        model = net.ESPNet(args.classes, p=p, q=q, args.pretrained)
+        model = net.ESPNet(args.classes, p=p, q=q, encoderFile=args.pretrained)
         args.savedir = args.savedir + '_dec_' + str(p) + '_' + str(q) + '/'
 
     if args.onGPU:
