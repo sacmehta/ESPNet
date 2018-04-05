@@ -1,5 +1,6 @@
 import torch
 import cv2
+import torch.utils.data
 
 __author__ = "Sachin Mehta"
 __license__ = "GPL"
