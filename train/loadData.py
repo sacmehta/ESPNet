@@ -127,6 +127,8 @@ class LoadData:
             data_dict['classWeights'] = self.classWeights
 
             pickle.dump(data_dict, open(self.cached_data_file, "wb"))
+            return data_dict
+        return None
 
 
 
