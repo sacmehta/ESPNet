@@ -152,8 +152,11 @@ def trainValidateSegmentation(args):
     '''
     # check if processed data file exists or not
     if not os.path.isfile(args.cached_data_file):
-        data = ld.LoadData(args.data_dir, args.classes, args.cached_data_file)
-        data.processData()
+        dataLoad = ld.LoadData(args.data_dir, args.classes, args.cached_data_file)
+        data = dataLoad.processData()
+        if data is None:
+            print('Error while pickling data. Please check.')
+            exit(-1)
     else:
         data = pickle.load(open(args.cached_data_file, "rb"))
 
