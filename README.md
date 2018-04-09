@@ -21,14 +21,13 @@ Our model ESPNet achives an class-wise mIOU of **60.336** and category-wise mIOU
 
 ## Performance on the CamVid dataset
 
-Our model achieves an mIOU of 55.64 on the CamVid dataset.
+Our model achieves an mIOU of 55.64 on the CamVid test set.
 
 | Model | mIOU | Class avg. | 
 | -- | -- | -- |
 | ENet | 51.3 | 68.3 | 
 | SegNet | 55.6 | 65.2 | 
 | ESPNet | 55.64 | 68.30 | 
-| -- | -- | -- |
 
 ## Pre-requisite
 
