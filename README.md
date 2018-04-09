@@ -14,10 +14,21 @@ This repository is organized as:
 
 ## Performance on the CityScape dataset
 
-Our model ESPNet achives an class-wise mIOU of **60.336** and category-wise mIOU of **82.178** on the CityScapes validation dataset and runs at 
+Our model ESPNet achives an class-wise mIOU of **60.336** and category-wise mIOU of **82.178** on the CityScapes test dataset and runs at 
 * 112 fps on the NVIDIA TitanX (30 fps faster than [ENet](https://arxiv.org/abs/1606.02147))
 * 9 FPS on TX2
 * With the same number of parameters as [ENet](https://arxiv.org/abs/1606.02147), our model is **2%** more accurate
+
+## Performance on the CamVid dataset
+
+Our model achieves an mIOU of 55.64 on the CamVid dataset.
+
+| Model | mIOU | Class avg. | 
+| -- | -- | -- |
+| ENet | 51.3 | 68.3 | 
+| SegNet | 55.6 | 65.2 | 
+| ESPNet | 55.64 | 68.30 | 
+| -- | -- | -- |
 
 ## Pre-requisite
 
