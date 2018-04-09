@@ -23,6 +23,8 @@ Our model ESPNet achives an class-wise mIOU of **60.336** and category-wise mIOU
 
 Our model achieves an mIOU of 55.64 on the CamVid test set. We used the dataset splits (train/val/test) provided [here](https://github.com/alexgkendall/SegNet-Tutorial). We trained the models at a resolution of 480x360. For comparison  with other models, see [SegNet paper](https://ieeexplore.ieee.org/document/7803544/).
 
+Note: We did not use the 3.5K dataset for training which was used in the SegNet paper.
+
 | Model | mIOU | Class avg. | 
 | -- | -- | -- |
 | ENet | 51.3 | 68.3 | 
