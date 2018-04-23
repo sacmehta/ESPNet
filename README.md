@@ -54,6 +54,7 @@ If ESPNet is useful for your research, then please cite our paper.
 ## FAQs
 
 1. Assertion error with class labels (t >= 0 && t < n_classes).
+
 If you are getting an assertion error with class labels, then please check the number of class labels defined in the label images. You can do this as:
 
 ```
