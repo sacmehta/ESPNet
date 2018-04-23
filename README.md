@@ -64,8 +64,8 @@ labelImg = cv2.imread(<label_filename.png>, 0)
 unique_val_arr = np.unique(labelImg)
 print(unique_val_arr)
 ```
-The values inside *unique_val_arr* should be between 0 and total number of classes in the dataset. If this is not the case, then pre-process your label images. For example, the PASCAL VOC segmentation dataset contains 255 as a value in the label images. You can map this value to the undefined class as:
+The values inside *unique_val_arr* should be between 0 and total number of classes in the dataset. If this is not the case, then pre-process your label images. For example, the PASCAL VOC segmentation dataset contains 255 as a value in the label images. You can map this value to the undefined or background class as:
 
 ```
-labelImg[labelImg == 255] = <background class id>
+labelImg[labelImg == 255] = <undefined class id>
 ```
