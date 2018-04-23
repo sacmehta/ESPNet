@@ -49,3 +49,22 @@ If ESPNet is useful for your research, then please cite our paper.
   year={2018}
 }
 ```
+
+
+## FAQs
+
+1. Assertion error with class labels (t >= 0 && t < n_classes).
+If you are getting an assertion error with class labels, then please check the number of class labels defined in the label images. You can do this as:
+
+```
+import cv2
+import numpy as np
+labelImg = cv2.imread(<label_filename.png>, 0)
+unique_val_arr = np.unique(labelImg)
+print(unique_val_arr)
+```
+The values inside *unique_val_arr* should be between 0 and total number of classes in the dataset. If this is not the case, then pre-process your label images. For example, the PASCAL VOC segmentation dataset contains 255 as a value in the label images. You can map this value to the undefined class as:
+
+```
+labelImg[labelImg == 255] = <background class id>
+```
