@@ -296,9 +296,9 @@ def trainValidateSegmentation(args):
     start_epoch = 0
 
     if args.resume:
-        if os.path.isfile(args.savedir):
+        if os.path.isfile(args.savedir + 'checkpoint.pth.tar'):
             print("=> loading checkpoint '{}'".format(args.resume))
-            checkpoint = torch.load(args.savedir)
+            checkpoint = torch.load(args.savedir + 'checkpoint.pth.tar')
             start_epoch = checkpoint['epoch']
             #args.lr = checkpoint['lr']
             model.load_state_dict(checkpoint['state_dict'])
