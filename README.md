@@ -35,7 +35,8 @@ Note: We did not use the 3.5K dataset for training which was used in the SegNet 
 
 To run this code, you need to have following libraries:
 * [OpenCV](https://opencv.org/) - We tested our code with version > 3.0.
-* [PyTorch](http://pytorch.org/)
+* [PyTorch](http://pytorch.org/) - We tested with v0.3.0
+* Python - We tested our code with Pythonv3. If you are using Python v2, please feel free to make necessary changes to the code. 
 
 We recommend to use [Anaconda](https://conda.io/docs/user-guide/install/linux.html). We have tested our code on Ubuntu 16.04.
 
