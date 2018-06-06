@@ -2,6 +2,10 @@
 
 This repository contains the source code of our paper, [ESPNet](https://arxiv.org/abs/1803.06815).
 
+## Sample results
+
+![sample video](/sample_video/sample_1.avi')
+
 
 ## Structure of this repository
 This repository is organized as:
