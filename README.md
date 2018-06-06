@@ -4,7 +4,7 @@ This repository contains the source code of our paper, [ESPNet](https://arxiv.or
 
 ## Sample results
 
-![sample video](/sample_video/sample_1.avi')
+![sample video](/sample_video/sample_1.avi)
 
 
 ## Structure of this repository
