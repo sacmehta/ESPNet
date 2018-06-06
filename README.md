@@ -4,7 +4,9 @@ This repository contains the source code of our paper, [ESPNet](https://arxiv.or
 
 ## Sample results
 
-![sample video](https://youtu.be/KSOXWGUqBGw)
+Check our [project page](https://sacmehta.github.io/ESPNet/) for more qualitative results (videos).
+
+![sample image](/sample_video/sample.png)
 
 
 ## Structure of this repository
