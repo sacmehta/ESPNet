@@ -9,7 +9,7 @@ Check our [project page](https://sacmehta.github.io/ESPNet/) for more qualitativ
 ![sample image](/sample_video/sample.png)
 
 <p align="center">
-<a href="https://www.youtube.com/watch?v=bixR11j4WiY" target="_blank">
+<a href="https://www.youtube.com/watch?v=bixR11j4WiY" target="_blank"><img src="/sample_video/sample.png" width="364"/></a>
 </p>
 
 
