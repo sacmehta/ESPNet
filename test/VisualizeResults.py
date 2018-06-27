@@ -80,7 +80,6 @@ def evaluateModel(args, model, up, image_list):
             orig_image = cv2.cvtColor(cv2.resize(input_img, (1024, 512)), cv2.COLOR_BGR2RGB)
             orig_image = PILImage.fromarray(np.uint8(orig_image), "RGB")
 
-
         img /= 255
         img = img.transpose((2, 0, 1))
         img_tensor = torch.from_numpy(img)
@@ -95,10 +94,8 @@ def evaluateModel(args, model, up, image_list):
 
         classMap_numpy = img_out[0].max(0)[1].byte().cpu().data.numpy()
         mask = classMap_numpy > 0
-
         mask = mask.astype(np.uint8) * 75
         mask_image = PILImage.fromarray(mask, "L")
-
 
         if i % 100 == 0:
             print(i)
