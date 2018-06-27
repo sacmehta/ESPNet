@@ -127,7 +127,7 @@ def main(args):
 
     p = args.p
     q = args.q
-    classes = 3
+    classes = 20
     if args.modelType == 2:
         modelA = Net.ESPNet_Encoder(classes, p, q)  # Net.Mobile_SegNetDilatedIA_C_stage1(20)
         model_weight_file = args.weightsDir + os.sep + 'encoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(
