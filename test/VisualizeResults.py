@@ -30,7 +30,6 @@ pallete = [128, 64, 128,
            119, 11, 32,
            0, 0, 0]
 
-
 def relabel(img):
     '''
     This function relabels the predicted labels so that cityscape dataset can process
@@ -67,7 +66,8 @@ def evaluateModel(args, model, up, image_list):
     std = [45.3192215, 46.15289307, 44.91483307]
 
     for i, imgName in enumerate(image_list):
-        img = cv2.imread(imgName).astype(np.float32)
+        input_img = cv2.imread(imgName).astype(np.float32)
+        img = np.copy(input_img)
         for j in range(3):
             img[:, :, j] -= mean[j]
         for j in range(3):
@@ -75,6 +75,10 @@ def evaluateModel(args, model, up, image_list):
 
         # resize the image to 1024x512x3
         img = cv2.resize(img, (1024, 512))
+        orig_image = None
+        if args.overlay:
+            orig_image = cv2.cvtColor(cv2.resize(input_img, (1024, 512)), cv2.COLOR_BGR2RGB)
+            orig_image = PILImage.fromarray(np.uint8(orig_image), "RGB")
 
         img /= 255
         img = img.transpose((2, 0, 1))
@@ -89,6 +93,9 @@ def evaluateModel(args, model, up, image_list):
             img_out = up(img_out)
 
         classMap_numpy = img_out[0].max(0)[1].byte().cpu().data.numpy()
+        mask = classMap_numpy > 0
+        mask = mask.astype(np.uint8) * 75
+        mask_image = PILImage.fromarray(mask, "L")
 
         if i % 100 == 0:
             print(i)
@@ -98,12 +105,14 @@ def evaluateModel(args, model, up, image_list):
         if args.colored:
             classMap_numpy_color = PILImage.fromarray(classMap_numpy)
             classMap_numpy_color.putpalette(pallete)
+            if args.overlay:
+                classMap_numpy_color = PILImage.composite(classMap_numpy_color, orig_image, mask=mask_image)
             classMap_numpy_color.save(args.savedir + os.sep + 'c_' + name.replace(args.img_extn, 'png'))
 
         if args.cityFormat:
             classMap_numpy = relabel(classMap_numpy.astype(np.uint8))
-
-        cv2.imwrite(args.savedir + os.sep + name.replace(args.img_extn, 'png'), classMap_numpy)
+        if not args.overlay:
+            cv2.imwrite(args.savedir + os.sep + name.replace(args.img_extn, 'png'), classMap_numpy)
 
 
 def main(args):
@@ -169,5 +178,7 @@ if __name__ == '__main__':
                                                                        'original label ids')
     parser.add_argument('--colored', default=True, type=bool, help='If you want to visualize the '
                                                                    'segmentation masks in color')
+    parser.add_argument('--overlay', default=False, type=bool, help='If you want to overlay the segmentation masks on'
+                                                                    ' the original image')
 
     main(parser.parse_args())
