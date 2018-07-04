@@ -9,26 +9,26 @@ import os
 import time
 from argparse import ArgumentParser
 
-pallete = [128, 64, 128,
-           244, 35, 232,
-           70, 70, 70,
-           102, 102, 156,
-           190, 153, 153,
-           153, 153, 153,
-           250, 170, 30,
-           220, 220, 0,
-           107, 142, 35,
-           152, 251, 152,
-           70, 130, 180,
-           220, 20, 60,
-           255, 0, 0,
-           0, 0, 142,
-           0, 0, 70,
-           0, 60, 100,
-           0, 80, 100,
-           0, 0, 230,
-           119, 11, 32,
-           0, 0, 0]
+pallete = [[128, 64, 128],
+           [244, 35, 232],
+           [70, 70, 70],
+           [102, 102, 156],
+           [190, 153, 153],
+           [153, 153, 153],
+           [250, 170, 30],
+           [220, 220, 0],
+           [107, 142, 35],
+           [152, 251, 152],
+           [70, 130, 180],
+           [220, 20, 60],
+           [255, 0, 0],
+           [0, 0, 142],
+           [0, 0, 70],
+           [0, 60, 100],
+           [0, 80, 100],
+           [0, 0, 230],
+           [119, 11, 32],
+           [0, 0, 0]]
 
 
 def relabel(img):
@@ -67,7 +67,11 @@ def evaluateModel(args, model, up, image_list):
     std = [45.3192215, 46.15289307, 44.91483307]
 
     for i, imgName in enumerate(image_list):
-        img = cv2.imread(imgName).astype(np.float32)
+        img = cv2.imread(imgName)
+        if args.overlay:
+            img_orig = np.copy(img)
+
+        img = img.astype(np.float32)
         for j in range(3):
             img[:, :, j] -= mean[j]
         for j in range(3):
@@ -75,6 +79,8 @@ def evaluateModel(args, model, up, image_list):
 
         # resize the image to 1024x512x3
         img = cv2.resize(img, (1024, 512))
+        if args.overlay:
+            img_orig = cv2.resize(img_orig, (1024, 512))
 
         img /= 255
         img = img.transpose((2, 0, 1))
@@ -96,9 +102,14 @@ def evaluateModel(args, model, up, image_list):
         name = imgName.split('/')[-1]
 
         if args.colored:
-            classMap_numpy_color = PILImage.fromarray(classMap_numpy)
-            classMap_numpy_color.putpalette(pallete)
-            classMap_numpy_color.save(args.savedir + os.sep + 'c_' + name.replace(args.img_extn, 'png'))
+            classMap_numpy_color = np.zeros((img.shape[1], img.shape[2], img.shape[0]), dtype=np.uint8)
+            for idx in range(len(pallete)):
+                [r, g, b] = pallete[idx]
+                classMap_numpy_color[classMap_numpy == idx] = [b, g, r]
+            cv2.imwrite(args.savedir + os.sep + 'c_' + name.replace(args.img_extn, 'png'), classMap_numpy_color)
+            if args.overlay:
+                overlayed = cv2.addWeighted(img_orig, 0.5, classMap_numpy_color, 0.5, 0)
+                cv2.imwrite(args.savedir + os.sep + 'over_' + name.replace(args.img_extn, 'jpg'), overlayed)
 
         if args.cityFormat:
             classMap_numpy = relabel(classMap_numpy.astype(np.uint8))
@@ -118,7 +129,7 @@ def main(args):
 
     p = args.p
     q = args.q
-    classes = 20
+    classes = args.classes
     if args.modelType == 2:
         modelA = Net.ESPNet_Encoder(classes, p, q)  # Net.Mobile_SegNetDilatedIA_C_stage1(20)
         model_weight_file = args.weightsDir + os.sep + 'encoder' + os.sep + 'espnet_p_' + str(p) + '_q_' + str(
@@ -160,7 +171,7 @@ if __name__ == '__main__':
     parser.add_argument('--modelType', type=int, default=1, help='1=ESPNet, 2=ESPNet-C')
     parser.add_argument('--savedir', default='./results', help='directory to save the results')
     parser.add_argument('--gpu', default=True, type=bool, help='Run on CPU or GPU. If TRUE, then GPU.')
-    parser.add_argument('--decoder', type=bool, default=False,
+    parser.add_argument('--decoder', type=bool, default=True,
                         help='True if ESPNet. False for ESPNet-C')  # False for encoder
     parser.add_argument('--weightsDir', default='../pretrained/', help='Pretrained weights directory.')
     parser.add_argument('--p', default=2, type=int, help='depth multiplier. Supported only 2')
@@ -169,5 +180,12 @@ if __name__ == '__main__':
                                                                        'original label ids')
     parser.add_argument('--colored', default=True, type=bool, help='If you want to visualize the '
                                                                    'segmentation masks in color')
+    parser.add_argument('--overlay', default=True, type=bool, help='If you want to visualize the '
+                                                                   'segmentation masks overlayed on top of RGB image')
+    parser.add_argument('--classes', default=20, type=int, help='Number of classes in the dataset. 20 for Cityscapes')
 
-    main(parser.parse_args())
+    args = parser.parse_args()
+    assert args.modelType == 1 and args.decoder, 'Model type should be 2 for ESPNet-C and 1 for ESPNet'
+    if args.overlay:
+        args.colored = True # This has to be true if you want to overlay
+    main(args)
