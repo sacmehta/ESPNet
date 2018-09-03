@@ -2,9 +2,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 __author__ = "Sachin Mehta"
-__license__ = "GPL"
-__version__ = "1.0.1"
-__maintainer__ = "Sachin Mehta"
 
 
 class CrossEntropyLoss2d(nn.Module):
