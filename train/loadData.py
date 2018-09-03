@@ -3,9 +3,6 @@ import cv2
 import pickle
 
 __author__ = "Sachin Mehta"
-__license__ = "GPL"
-__version__ = "1.0.1"
-__maintainer__ = "Sachin Mehta"
 
 class LoadData:
     '''
