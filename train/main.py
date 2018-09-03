@@ -15,9 +15,6 @@ from IOUEval import iouEval
 import torch.optim.lr_scheduler
 
 __author__ = "Sachin Mehta"
-__license__ = "GPL"
-__version__ = "1.0.1"
-__maintainer__ = "Sachin Mehta"
 
 def val(args, val_loader, model, criterion):
     '''
