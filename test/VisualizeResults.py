@@ -185,7 +185,7 @@ if __name__ == '__main__':
     parser.add_argument('--classes', default=20, type=int, help='Number of classes in the dataset. 20 for Cityscapes')
 
     args = parser.parse_args()
-    assert args.modelType == 1 and args.decoder, 'Model type should be 2 for ESPNet-C and 1 for ESPNet'
+    assert (args.modelType == 1) and args.decoder, 'Model type should be 2 for ESPNet-C and 1 for ESPNet'
     if args.overlay:
         args.colored = True # This has to be true if you want to overlay
     main(args)
