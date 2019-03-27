@@ -8,7 +8,7 @@ class LoadData:
     '''
     Class to laod the data
     '''
-    def __init__(self, data_dir, classes, cached_data_file, normVal=1.10):
+    def __init__(self, data_dir, classes, cached_data_file, ignored_Id, normVal=1.10):
         '''
         :param data_dir: directory where the dataset is kept
         :param classes: number of classes in the dataset
@@ -26,6 +26,7 @@ class LoadData:
         self.trainAnnotList = list()
         self.valAnnotList = list()
         self.cached_data_file = cached_data_file
+        self.ignored_Id = ignored_Id
 
     def compute_class_weights(self, histogram):
         '''
@@ -85,9 +86,16 @@ class LoadData:
                     self.valAnnotList.append(label_file)
 
                 if max_val > (self.classes - 1) or min_val < 0:
-                    print('Labels can take value between 0 and number of classes.')
-                    print('Some problem with labels. Please check.')
-                    print('Label Image ID: ' + label_file)
+                    if max_val == self.ignored_Id:
+                        print('Label id: %d has been ignored' %self.ignored_Id)
+                        print('Label Image ID: ' + label_file)
+
+                    else:
+                        print('Labels can take value between 0 and number of classes.')
+                        print('Some problem with labels.'
+                              'You might want to set ignored_Id = <undefined class id>'
+                              'Please check argument ignored_Id in main.py')
+                        print('Label Image ID: ' + label_file)
                 no_files += 1
 
         if trainStg == True:
