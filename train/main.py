@@ -48,14 +48,16 @@ def val(args, val_loader, model, criterion):
         # compute the loss
         loss = criterion(output, target_var)
 
-        epoch_loss.append(loss.data[0])
+        #epoch_loss.append(loss.data[0])
+
+        epoch_loss.append(loss.item())
 
         time_taken = time.time() - start_time
 
         # compute the confusion matrix
         iouEvalVal.addBatch(output.max(1)[1].data, target_var.data)
 
-        print('[%d/%d] loss: %.3f time: %.2f' % (i, total_batches, loss.data[0], time_taken))
+        print('[%d/%d] loss: %.3f time: %.2f' % (i, total_batches, loss.item(), time_taken))
 
     average_epoch_loss_val = sum(epoch_loss) / len(epoch_loss)
 
@@ -102,13 +104,13 @@ def train(args, train_loader, model, criterion, optimizer, epoch):
         loss.backward()
         optimizer.step()
 
-        epoch_loss.append(loss.data[0])
+        epoch_loss.append(loss.item())
         time_taken = time.time() - start_time
 
         #compute the confusion matrix
         iouEvalTrain.addBatch(output.max(1)[1].data, target_var.data)
 
-        print('[%d/%d] loss: %.3f time:%.2f' % (i, total_batches, loss.data[0], time_taken))
+        print('[%d/%d] loss: %.3f time:%.2f' % (i, total_batches, loss.item(), time_taken))
 
     average_epoch_loss_train = sum(epoch_loss) / len(epoch_loss)
 
@@ -149,7 +151,7 @@ def trainValidateSegmentation(args):
     '''
     # check if processed data file exists or not
     if not os.path.isfile(args.cached_data_file):
-        dataLoad = ld.LoadData(args.data_dir, args.classes, args.cached_data_file)
+        dataLoad = ld.LoadData(args.data_dir, args.classes, args.cached_data_file, args.ignored_Id)
         data = dataLoad.processData()
         if data is None:
             print('Error while pickling data. Please check.')
@@ -159,6 +161,7 @@ def trainValidateSegmentation(args):
 
     q = args.q
     p = args.p
+    ignored_Id = args.ignored_Id
     # load the model
     if not args.decoder:
         model = net.ESPNet_Encoder(args.classes, p=p, q=q)
@@ -192,7 +195,8 @@ def trainValidateSegmentation(args):
     if args.onGPU:
         weight = weight.cuda()
 
-    criteria = CrossEntropyLoss2d(weight) #weight
+    #criteria = CrossEntropyLoss2d(weight) #weight
+    criteria = torch.nn.CrossEntropyLoss(weight=weight,ignore_index=ignored_Id) #ignore index -100 for default
 
     if args.onGPU:
         criteria = criteria.cuda()
@@ -386,7 +390,7 @@ if __name__ == '__main__':
     parser.add_argument('--scaleIn', type=int, default=8, help='For ESPNet-C, scaleIn=8. For ESPNet, scaleIn=1')
     parser.add_argument('--max_epochs', type=int, default=300, help='Max. number of epochs')
     parser.add_argument('--num_workers', type=int, default=4, help='No. of parallel threads')
-    parser.add_argument('--batch_size', type=int, default=12, help='Batch size. 12 for ESPNet-C and 6 for ESPNet. '
+    parser.add_argument('--batch_size', type=int, default=8, help='Batch size. 12 for ESPNet-C and 6 for ESPNet. '
                                                                    'Change as per the GPU memory')
     parser.add_argument('--step_loss', type=int, default=100, help='Decrease learning rate after how many epochs.')
     parser.add_argument('--lr', type=float, default=5e-4, help='Initial learning rate')
@@ -402,6 +406,9 @@ if __name__ == '__main__':
                                                                               'Only used when training ESPNet')
     parser.add_argument('--p', default=2, type=int, help='depth multiplier')
     parser.add_argument('--q', default=8, type=int, help='depth multiplier')
+    parser.add_argument('--ignored_Id', default=255, type=int, help='ignoredTrainId for crossEntryLoss.'
+                                                                    'default 255 to ignore cityscapes background TrainId.'
+                                                                    'the background Id could be seen in cityscapesScripts/cityscapesscripts/helpers/label.py')
 
     trainValidateSegmentation(parser.parse_args())
 
