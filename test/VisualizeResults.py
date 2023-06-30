@@ -68,8 +68,6 @@ def evaluateModel(args, model, up, image_list):
 
     for i, imgName in enumerate(image_list):
         img = cv2.imread(imgName)
-        if args.overlay:
-            img_orig = np.copy(img)
 
         img = img.astype(np.float32)
         for j in range(3):
@@ -80,7 +78,7 @@ def evaluateModel(args, model, up, image_list):
         # resize the image to 1024x512x3
         img = cv2.resize(img, (1024, 512))
         if args.overlay:
-            img_orig = cv2.resize(img_orig, (1024, 512))
+            img_orig = np.copy(img)
 
         img /= 255
         img = img.transpose((2, 0, 1))
